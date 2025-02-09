@@ -1,0 +1,22 @@
+<resources>
+    <!-- Login -->
+    <string name="app_name">Eccomerce</string>
+    <string name="correo">Correo Electronico</string>
+    <string name="conteseña">Contraseña</string>
+    <string name="titulo_ingresar">INGRESAR</string>
+    <string name="titulo_boton_login">LOGIN</string>
+    <string name="no_cuenta">No tienes Cuenta?</string>
+    <string name="registrate">Registrate</string>
+
+    <!-- Register -->
+    <string name="titulo_llenar_datos">INGRESE ESTA INFORMACIÓN</string>
+    <string name="registrarse">Registro</string>
+    <string name="nombre">Nombres</string>
+    <string name="apellido">Apellido</string>
+    <string name="telefono">Telefono</string>
+    <string name="confirmar_contraseña">Confirmar Contraseña</string>
+    <string name="titulo_boton_register">CONFIRMAR</string>
+
+    <!-- Profile -->
+    <string name="nombre_del_user">Nombre del usuario</string>
+</resources>

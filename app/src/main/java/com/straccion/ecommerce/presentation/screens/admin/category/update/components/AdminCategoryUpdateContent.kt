@@ -1,8 +1,7 @@
-package com.straccion.ecommerce.presentation.screens.admin.category.create.components
+package com.straccion.ecommerce.presentation.screens.admin.category.update.components
 
 import android.app.Activity
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,7 +15,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -32,7 +30,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -46,12 +43,12 @@ import com.straccion.ecommerce.presentation.components.DefaultAsyncImage
 import com.straccion.ecommerce.presentation.components.DefaultButton
 import com.straccion.ecommerce.presentation.components.DefaultTextField
 import com.straccion.ecommerce.presentation.components.DialogCapturePicture
-import com.straccion.ecommerce.presentation.screens.admin.category.create.AdminCategoryCreateViewModel
+import com.straccion.ecommerce.presentation.screens.admin.category.update.AdminCategoryUpdateViewModel
 
 @Composable
-fun AdminCategoryCreateContent(
+fun AdminCategoryUpdateContent(
     paddingValues: PaddingValues,
-    viewModel: AdminCategoryCreateViewModel = hiltViewModel()
+    viewModel: AdminCategoryUpdateViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     val activity = context as Activity
@@ -152,9 +149,9 @@ fun AdminCategoryCreateContent(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
-                    text = "Crear Categoria",
+                    text = "Actualizar Categoria",
                     onClick = {
-                        viewModel.createCategory()
+                        viewModel.onUpdate()
                     }
                 )
                 Spacer(modifier = Modifier.height(60.dp))

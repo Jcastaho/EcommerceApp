@@ -3,6 +3,7 @@ package com.straccion.ecommerce.di
 import com.straccion.ecommerce.core.Config.BASE_URL
 import com.straccion.ecommerce.data.datastore.AuthDataStore
 import com.straccion.ecommerce.data.service.AuthService
+import com.straccion.ecommerce.data.service.CategoriesService
 import com.straccion.ecommerce.data.service.UsersService
 import dagger.Module
 import dagger.Provides
@@ -51,5 +52,11 @@ object NetworkModule {
     @Singleton
     fun provideUsersService(retrofit: Retrofit): UsersService{
         return retrofit.create(UsersService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCategoriesService(retrofit: Retrofit): CategoriesService{
+        return retrofit.create(CategoriesService::class.java)
     }
 }

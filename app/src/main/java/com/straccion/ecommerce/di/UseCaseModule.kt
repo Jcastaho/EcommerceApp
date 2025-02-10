@@ -2,6 +2,7 @@ package com.straccion.ecommerce.di
 
 
 import com.straccion.ecommerce.domains.repository.AuthRepository
+import com.straccion.ecommerce.domains.repository.CategoryRepository
 import com.straccion.ecommerce.domains.repository.UsersRepository
 import com.straccion.ecommerce.domains.usecase.auth.AuthUseCase
 import com.straccion.ecommerce.domains.usecase.auth.GetSessionDataUseCase
@@ -10,6 +11,11 @@ import com.straccion.ecommerce.domains.usecase.auth.LogoutUseCase
 import com.straccion.ecommerce.domains.usecase.auth.RegisterUseCase
 import com.straccion.ecommerce.domains.usecase.auth.SaveSessionUseCase
 import com.straccion.ecommerce.domains.usecase.auth.UpdateSessionUseCase
+import com.straccion.ecommerce.domains.usecase.categories.CategoriesUseCase
+import com.straccion.ecommerce.domains.usecase.categories.CreateCategoryUseCase
+import com.straccion.ecommerce.domains.usecase.categories.GetCategoriesUseCase
+import com.straccion.ecommerce.domains.usecase.categories.UpdateCategoryUseCase
+import com.straccion.ecommerce.domains.usecase.categories.UpdateWithImageCategoryUseCase
 import com.straccion.ecommerce.domains.usecase.users.UpdateUserUseCase
 import com.straccion.ecommerce.domains.usecase.users.UpdateUserWithImageUseCase
 import com.straccion.ecommerce.domains.usecase.users.UsersUseCase
@@ -37,5 +43,14 @@ object UseCaseModule {
         UsersUseCase(
             updateUserUseCase = UpdateUserUseCase(usersRepository),
             updateUserWithImage = UpdateUserWithImageUseCase(usersRepository)
+        )
+
+    @Provides
+    fun provideCategoriesUseCase(categoriesRepository: CategoryRepository) =
+        CategoriesUseCase(
+            createCategoryUseCase = CreateCategoryUseCase(categoriesRepository),
+            getCategoriesUseCase = GetCategoriesUseCase(categoriesRepository),
+            updateCategoryUseCase = UpdateCategoryUseCase(categoriesRepository),
+            updateWithImageCategoryUseCase = UpdateWithImageCategoryUseCase(categoriesRepository)
         )
 }

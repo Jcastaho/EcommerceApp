@@ -19,4 +19,12 @@
 
     <!-- Profile -->
     <string name="nombre_del_user">Nombre del usuario</string>
+
+    <!-- Admin Category -->
+    <string name="titulo_category">CATEGORIA</string>
+    <string name="nombre_category">Nombre de la categoria</string>
+    <string name="descripcion_category">Descripción</string>
+
+    <!-- Admin Category Update-->
+    <string name="titulo_category_update">ACTUALIZAR CATEGORIA</string>
 </resources>

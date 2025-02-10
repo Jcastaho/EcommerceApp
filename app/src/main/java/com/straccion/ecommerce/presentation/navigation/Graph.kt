@@ -6,5 +6,6 @@ object Graph {
     const val ROLES = "roles_graph"
     const val CLIENT = "client_graph"
     const val ADMIN = "admin_graph"
+    const val ADMIN_CATEGORY = "admin_category_graph"
     const val PROFILE = "profile_graph"
 }

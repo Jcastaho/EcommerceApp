@@ -15,7 +15,8 @@ import coil.size.Size
 @Composable
 fun DefaultAsyncImage(
     imageUrl: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    contentScale: ContentScale = ContentScale.Crop
 ) {
     // Imagen principal
     AsyncImage(
@@ -31,7 +32,7 @@ fun DefaultAsyncImage(
             .memoryCacheKey(imageUrl)
             .diskCacheKey(imageUrl)
             .build(),
-        contentScale = ContentScale.Crop,
+        contentScale = contentScale,
         contentDescription = "Moto image"
     )
 }

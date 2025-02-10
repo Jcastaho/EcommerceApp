@@ -1,10 +1,13 @@
 package com.straccion.ecommerce.di
 
 import com.straccion.ecommerce.data.repository.datasource.AuthRemoteDataSource
+import com.straccion.ecommerce.data.repository.datasource.CategoriesRemoteDataSource
 import com.straccion.ecommerce.data.repository.datasource.UsersRemoteDataSource
 import com.straccion.ecommerce.data.repository.datasourceimp.AuthRemoteDataSourceImpl
+import com.straccion.ecommerce.data.repository.datasourceimp.CategoriesRemoteDataSourceImpl
 import com.straccion.ecommerce.data.repository.datasourceimp.UsersRemoteDataSourceImpl
 import com.straccion.ecommerce.data.service.AuthService
+import com.straccion.ecommerce.data.service.CategoriesService
 import com.straccion.ecommerce.data.service.UsersService
 import dagger.Module
 import dagger.Provides
@@ -21,4 +24,8 @@ object RemoteDataModule {
     @Provides
     fun provideUsersRemoteDataSource(usersService: UsersService): UsersRemoteDataSource =
         UsersRemoteDataSourceImpl(usersService)
+
+    @Provides
+    fun provideCategoriesRemoteDataSource(categoriesService: CategoriesService): CategoriesRemoteDataSource =
+        CategoriesRemoteDataSourceImpl(categoriesService)
 }

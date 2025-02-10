@@ -5,7 +5,7 @@ import com.straccion.ecommerce.domains.repository.UsersRepository
 import java.io.File
 
 
-class UpdateUserWithImageUseCase constructor(val repository: UsersRepository) {
+class UpdateUserWithImageUseCase (val repository: UsersRepository) {
 
     suspend operator fun invoke(id: String, user: User, file: File) =
         repository.updateWithImage(id, user, file)

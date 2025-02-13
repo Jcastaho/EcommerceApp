@@ -1,7 +1,7 @@
-package com.straccion.ecommerce.data.repository.datasourceimp
+package com.straccion.ecommerce.data.datasource.local.repository.datasourceimp
 
-import com.straccion.ecommerce.data.datastore.AuthDataStore
-import com.straccion.ecommerce.data.repository.datasource.AuthLocalDataSource
+import com.straccion.ecommerce.data.datasource.local.datastore.AuthDataStore
+import com.straccion.ecommerce.data.datasource.local.repository.datasource.AuthLocalDataSource
 import com.straccion.ecommerce.domains.model.AuthResponse
 import com.straccion.ecommerce.domains.model.User
 import kotlinx.coroutines.flow.Flow

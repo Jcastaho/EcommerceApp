@@ -1,4 +1,4 @@
-package com.straccion.ecommerce.data.service
+package com.straccion.ecommerce.data.datasource.remote.service
 
 import com.straccion.ecommerce.domains.model.User
 import okhttp3.MultipartBody

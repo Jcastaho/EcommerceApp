@@ -1,11 +1,11 @@
 package com.straccion.ecommerce.di
 
-import com.straccion.ecommerce.data.datastore.AuthDataStore
-import com.straccion.ecommerce.data.repository.datasource.AuthLocalDataSource
-import com.straccion.ecommerce.data.repository.datasource.AuthRemoteDataSource
-import com.straccion.ecommerce.data.repository.datasourceimp.AuthLocalDataSourceImpl
-import com.straccion.ecommerce.data.repository.datasourceimp.AuthRemoteDataSourceImpl
-import com.straccion.ecommerce.data.service.AuthService
+import com.straccion.ecommerce.data.datasource.local.dao.CategoriesDao
+import com.straccion.ecommerce.data.datasource.local.datastore.AuthDataStore
+import com.straccion.ecommerce.data.datasource.local.repository.datasource.AuthLocalDataSource
+import com.straccion.ecommerce.data.datasource.local.repository.datasource.CategoriesLocalDataSource
+import com.straccion.ecommerce.data.datasource.local.repository.datasourceimp.AuthLocalDataSourceImpl
+import com.straccion.ecommerce.data.datasource.local.repository.datasourceimp.CategoriesLocalDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,4 +17,7 @@ object LocalDataModule {
     @Provides
     fun provideAuthLocalDataSource(authDataStore: AuthDataStore): AuthLocalDataSource =
         AuthLocalDataSourceImpl(authDataStore)
+
+    @Provides
+    fun provideCategoriesLocalDataSource(categoriesDao: CategoriesDao): CategoriesLocalDataSource = CategoriesLocalDataSourceImpl(categoriesDao)
 }

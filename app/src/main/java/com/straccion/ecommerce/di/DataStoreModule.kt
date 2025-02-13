@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.straccion.ecommerce.core.Config.AUTH_PREF
-import com.straccion.ecommerce.data.datastore.AuthDataStore
+import com.straccion.ecommerce.data.datasource.local.datastore.AuthDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

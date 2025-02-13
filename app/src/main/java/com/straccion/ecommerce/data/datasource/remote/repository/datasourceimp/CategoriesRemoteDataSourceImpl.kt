@@ -1,19 +1,14 @@
-package com.straccion.ecommerce.data.repository.datasourceimp
+package com.straccion.ecommerce.data.datasource.remote.repository.datasourceimp
 
-import com.straccion.ecommerce.data.repository.datasource.CategoriesRemoteDataSource
-import com.straccion.ecommerce.data.repository.datasource.UsersRemoteDataSource
-import com.straccion.ecommerce.data.service.CategoriesService
-import com.straccion.ecommerce.data.service.UsersService
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.CategoriesRemoteDataSource
+import com.straccion.ecommerce.data.datasource.remote.service.CategoriesService
 import com.straccion.ecommerce.domains.model.Category
-import com.straccion.ecommerce.domains.model.User
-import kotlinx.coroutines.flow.Flow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Response
 import java.io.File
-import java.net.URLEncoder
 
 class CategoriesRemoteDataSourceImpl(
     private val categoriesService: CategoriesService
@@ -53,7 +48,5 @@ class CategoriesRemoteDataSourceImpl(
     override suspend fun getCategories(): Response<List<Category>> =
         categoriesService.getCategories()
 
-    override suspend fun delete(id: String): Response<Unit> {
-        TODO("Not yet implemented")
-    }
+    override suspend fun delete(id: String): Response<Unit> = categoriesService.delete(id)
 }

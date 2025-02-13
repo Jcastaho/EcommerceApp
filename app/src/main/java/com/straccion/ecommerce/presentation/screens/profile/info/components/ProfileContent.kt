@@ -85,6 +85,19 @@ fun ProfileContent(
                     activity?.finish()
                     activity?.startActivity(Intent(activity, MainActivity::class.java))
                 }) {
+                Image(
+                    modifier = Modifier.size(100.dp),
+                    painter = painterResource(R.drawable.logout),
+                    contentDescription = "Cerrar Sesion"
+                )
+            }
+            IconButton(modifier = Modifier
+                .align(Alignment.End)
+                .padding(end = 15.dp, top = 15.dp),
+                onClick = {
+                    activity?.finish()
+                    activity?.startActivity(Intent(activity, MainActivity::class.java))
+                }) {
                 Icon(
                     modifier = Modifier.size(100.dp),
                     imageVector = Icons.AutoMirrored.Filled.ExitToApp,

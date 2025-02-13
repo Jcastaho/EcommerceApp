@@ -13,6 +13,7 @@ import com.straccion.ecommerce.domains.usecase.auth.SaveSessionUseCase
 import com.straccion.ecommerce.domains.usecase.auth.UpdateSessionUseCase
 import com.straccion.ecommerce.domains.usecase.categories.CategoriesUseCase
 import com.straccion.ecommerce.domains.usecase.categories.CreateCategoryUseCase
+import com.straccion.ecommerce.domains.usecase.categories.DeleteCategoryUseCase
 import com.straccion.ecommerce.domains.usecase.categories.GetCategoriesUseCase
 import com.straccion.ecommerce.domains.usecase.categories.UpdateCategoryUseCase
 import com.straccion.ecommerce.domains.usecase.categories.UpdateWithImageCategoryUseCase
@@ -51,6 +52,7 @@ object UseCaseModule {
             createCategoryUseCase = CreateCategoryUseCase(categoriesRepository),
             getCategoriesUseCase = GetCategoriesUseCase(categoriesRepository),
             updateCategoryUseCase = UpdateCategoryUseCase(categoriesRepository),
-            updateWithImageCategoryUseCase = UpdateWithImageCategoryUseCase(categoriesRepository)
+            updateWithImageCategoryUseCase = UpdateWithImageCategoryUseCase(categoriesRepository),
+            deleteCategoryUseCase = DeleteCategoryUseCase(categoriesRepository)
         )
 }

@@ -1,4 +1,4 @@
-package com.straccion.ecommerce.data.repository.datasource
+package com.straccion.ecommerce.data.datasource.remote.repository.datasource
 
 import com.straccion.ecommerce.domains.model.User
 import retrofit2.Response

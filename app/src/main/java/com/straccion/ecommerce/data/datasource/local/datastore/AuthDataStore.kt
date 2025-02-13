@@ -1,4 +1,4 @@
-package com.straccion.ecommerce.data.datastore
+package com.straccion.ecommerce.data.datasource.local.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences

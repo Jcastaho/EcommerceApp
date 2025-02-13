@@ -1,7 +1,7 @@
-package com.straccion.ecommerce.data.repository.datasourceimp
+package com.straccion.ecommerce.data.datasource.remote.repository.datasourceimp
 
-import com.straccion.ecommerce.data.repository.datasource.UsersRemoteDataSource
-import com.straccion.ecommerce.data.service.UsersService
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.UsersRemoteDataSource
+import com.straccion.ecommerce.data.datasource.remote.service.UsersService
 import com.straccion.ecommerce.domains.model.User
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -9,7 +9,6 @@ import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Response
 import java.io.File
-import java.net.URLEncoder
 
 class UsersRemoteDataSourceImpl(
     private val usersService: UsersService

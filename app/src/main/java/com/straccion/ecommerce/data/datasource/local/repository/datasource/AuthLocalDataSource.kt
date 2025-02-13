@@ -1,4 +1,4 @@
-package com.straccion.ecommerce.data.repository.datasource
+package com.straccion.ecommerce.data.datasource.local.repository.datasource
 
 import com.straccion.ecommerce.domains.model.AuthResponse
 import com.straccion.ecommerce.domains.model.User

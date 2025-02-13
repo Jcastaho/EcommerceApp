@@ -1,14 +1,14 @@
 package com.straccion.ecommerce.di
 
-import com.straccion.ecommerce.data.repository.datasource.AuthRemoteDataSource
-import com.straccion.ecommerce.data.repository.datasource.CategoriesRemoteDataSource
-import com.straccion.ecommerce.data.repository.datasource.UsersRemoteDataSource
-import com.straccion.ecommerce.data.repository.datasourceimp.AuthRemoteDataSourceImpl
-import com.straccion.ecommerce.data.repository.datasourceimp.CategoriesRemoteDataSourceImpl
-import com.straccion.ecommerce.data.repository.datasourceimp.UsersRemoteDataSourceImpl
-import com.straccion.ecommerce.data.service.AuthService
-import com.straccion.ecommerce.data.service.CategoriesService
-import com.straccion.ecommerce.data.service.UsersService
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.AuthRemoteDataSource
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.CategoriesRemoteDataSource
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.UsersRemoteDataSource
+import com.straccion.ecommerce.data.datasource.remote.repository.datasourceimp.AuthRemoteDataSourceImpl
+import com.straccion.ecommerce.data.datasource.remote.repository.datasourceimp.CategoriesRemoteDataSourceImpl
+import com.straccion.ecommerce.data.datasource.remote.repository.datasourceimp.UsersRemoteDataSourceImpl
+import com.straccion.ecommerce.data.datasource.remote.service.AuthService
+import com.straccion.ecommerce.data.datasource.remote.service.CategoriesService
+import com.straccion.ecommerce.data.datasource.remote.service.UsersService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

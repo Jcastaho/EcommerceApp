@@ -24,16 +24,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.straccion.ecommerce.R
 import com.straccion.ecommerce.domains.model.Category
 import com.straccion.ecommerce.presentation.components.DefaultAsyncImage
 import com.straccion.ecommerce.presentation.navigation.screen.admin.AdminCategoryScreen
+import com.straccion.ecommerce.presentation.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
 fun AdminCategoryListItem(
     category: Category,
-    navHostController: NavHostController
+    navHostController: NavHostController,
+    viewModel: AdminCategoryListViewModel = hiltViewModel()
 ) {
     Column(
         modifier = Modifier
@@ -87,7 +91,8 @@ fun AdminCategoryListItem(
                 Image(
                     modifier = Modifier
                         .size(25.dp)
-                        .weight(1f),
+                        .weight(1f)
+                        .clickable { viewModel.deleteCategory(id = category.id ?: "") },
                     painter = painterResource(R.drawable.trash),
                     contentDescription = null
                 )

@@ -1,10 +1,10 @@
 package com.straccion.ecommerce.di
 
 import com.straccion.ecommerce.core.Config.BASE_URL
-import com.straccion.ecommerce.data.datastore.AuthDataStore
-import com.straccion.ecommerce.data.service.AuthService
-import com.straccion.ecommerce.data.service.CategoriesService
-import com.straccion.ecommerce.data.service.UsersService
+import com.straccion.ecommerce.data.datasource.local.datastore.AuthDataStore
+import com.straccion.ecommerce.data.datasource.remote.service.AuthService
+import com.straccion.ecommerce.data.datasource.remote.service.CategoriesService
+import com.straccion.ecommerce.data.datasource.remote.service.UsersService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,19 +44,19 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideAuthService(retrofit: Retrofit): AuthService{
+    fun provideAuthService(retrofit: Retrofit): AuthService {
         return retrofit.create(AuthService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideUsersService(retrofit: Retrofit): UsersService{
+    fun provideUsersService(retrofit: Retrofit): UsersService {
         return retrofit.create(UsersService::class.java)
     }
 
     @Provides
     @Singleton
-    fun provideCategoriesService(retrofit: Retrofit): CategoriesService{
+    fun provideCategoriesService(retrofit: Retrofit): CategoriesService {
         return retrofit.create(CategoriesService::class.java)
     }
 }

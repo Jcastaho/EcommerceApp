@@ -1,7 +1,7 @@
-package com.straccion.ecommerce.data.repository.datasourceimp
+package com.straccion.ecommerce.data.datasource.remote.repository.datasourceimp
 
-import com.straccion.ecommerce.data.repository.datasource.AuthRemoteDataSource
-import com.straccion.ecommerce.data.service.AuthService
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.AuthRemoteDataSource
+import com.straccion.ecommerce.data.datasource.remote.service.AuthService
 import com.straccion.ecommerce.domains.model.AuthResponse
 import com.straccion.ecommerce.domains.model.User
 import retrofit2.Response

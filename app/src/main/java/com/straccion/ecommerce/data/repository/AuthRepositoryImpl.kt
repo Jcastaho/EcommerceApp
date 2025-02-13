@@ -1,7 +1,7 @@
 package com.straccion.ecommerce.data.repository
 
-import com.straccion.ecommerce.data.repository.datasource.AuthLocalDataSource
-import com.straccion.ecommerce.data.repository.datasource.AuthRemoteDataSource
+import com.straccion.ecommerce.data.datasource.local.repository.datasource.AuthLocalDataSource
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.AuthRemoteDataSource
 import com.straccion.ecommerce.domains.model.AuthResponse
 import com.straccion.ecommerce.domains.model.User
 import com.straccion.ecommerce.domains.repository.AuthRepository

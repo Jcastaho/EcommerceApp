@@ -3,12 +3,11 @@ package com.straccion.ecommerce.di
 import com.straccion.ecommerce.data.repository.AuthRepositoryImpl
 import com.straccion.ecommerce.data.repository.CategoriesRepositoryImpl
 import com.straccion.ecommerce.data.repository.UsersRepositoryImpl
-import com.straccion.ecommerce.data.repository.datasource.AuthLocalDataSource
-import com.straccion.ecommerce.data.repository.datasource.AuthRemoteDataSource
-import com.straccion.ecommerce.data.repository.datasource.CategoriesRemoteDataSource
-import com.straccion.ecommerce.data.repository.datasource.UsersRemoteDataSource
-import com.straccion.ecommerce.data.repository.datasourceimp.AuthRemoteDataSourceImpl
-import com.straccion.ecommerce.data.service.AuthService
+import com.straccion.ecommerce.data.datasource.local.repository.datasource.AuthLocalDataSource
+import com.straccion.ecommerce.data.datasource.local.repository.datasource.CategoriesLocalDataSource
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.AuthRemoteDataSource
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.CategoriesRemoteDataSource
+import com.straccion.ecommerce.data.datasource.remote.repository.datasource.UsersRemoteDataSource
 import com.straccion.ecommerce.domains.repository.AuthRepository
 import com.straccion.ecommerce.domains.repository.CategoryRepository
 import com.straccion.ecommerce.domains.repository.UsersRepository
@@ -35,7 +34,8 @@ object RepositoryModule {
 
     @Provides
     fun provideCategoryRepository(
-        categoriesRemoteDataSource: CategoriesRemoteDataSource
+        remoteDataSource: CategoriesRemoteDataSource,
+        localDataSource: CategoriesLocalDataSource
     ): CategoryRepository =
-        CategoriesRepositoryImpl(categoriesRemoteDataSource)
+        CategoriesRepositoryImpl(remoteDataSource, localDataSource)
 }

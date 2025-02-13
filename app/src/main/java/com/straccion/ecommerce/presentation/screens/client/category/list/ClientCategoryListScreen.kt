@@ -2,12 +2,12 @@ package com.straccion.ecommerce.presentation.screens.client.category.list
 
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import com.straccion.ecommerce.presentation.screens.client.category.list.components.ClientCategoryListContent
+import androidx.navigation.NavHostController
+import com.straccion.ecommerce.presentation.screens.client.category.list.components.GetCategories
 
 @Composable
-fun ClientCategoryListScreen() {
+fun ClientCategoryListScreen(navHostController: NavHostController) {
     Scaffold {
-        ClientCategoryListContent(it)
+        GetCategories(navHostController = navHostController, paddingValues = it)
     }
 }

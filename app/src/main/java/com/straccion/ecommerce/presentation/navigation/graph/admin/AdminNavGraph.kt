@@ -16,11 +16,11 @@ fun AdminNavGraph(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
         route = Graph.ADMIN,
-        startDestination = AdminScreen.ProductList.route
+        startDestination = AdminScreen.CategoryList.route
     ){
-        composable(route = AdminScreen.ProductList.route){
-            AdminProductListScreen(navHostController)
-        }
+//        composable(route = AdminScreen.ProductList.route){
+//            AdminProductListScreen(navHostController)
+//        }
         composable(route = AdminScreen.CategoryList.route){
             AdminCategoryListScreen(navHostController)
         }

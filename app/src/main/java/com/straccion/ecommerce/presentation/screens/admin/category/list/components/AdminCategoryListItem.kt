@@ -43,6 +43,13 @@ fun AdminCategoryListItem(
         modifier = Modifier
             .padding(start = 20.dp, end = 20.dp, top = 20.dp)
             .height(80.dp)
+            .clickable {
+                navHostController.navigate(
+                    route = AdminCategoryScreen.ProducList.passCategory(
+                        category.toJson()
+                    )
+                )
+            }
     ) {
         Row() {
             DefaultAsyncImage(

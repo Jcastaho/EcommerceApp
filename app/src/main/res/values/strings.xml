@@ -27,4 +27,10 @@
 
     <!-- Admin Category Update-->
     <string name="titulo_category_update">ACTUALIZAR CATEGORIA</string>
+
+    <!-- Admin Product -->
+    <string name="titulo_product">NUEVO PRODUCTO</string>
+    <string name="nombre_producto">Nombre del producto</string>
+    <string name="descripcion_producto">Descripción</string>
+    <string name="precio_producto">Precio</string>
 </resources>

@@ -12,6 +12,8 @@ import com.straccion.ecommerce.presentation.navigation.screen.roles.RolesScreen
 import com.straccion.ecommerce.presentation.screens.admin.category.create.AdminCategoryCreateScreen
 import com.straccion.ecommerce.presentation.screens.admin.category.update.AdminCategoryUpdateScreen
 import com.straccion.ecommerce.presentation.screens.admin.home.AdminHomeScreen
+import com.straccion.ecommerce.presentation.screens.admin.product.create.AdminProductCreateScreen
+import com.straccion.ecommerce.presentation.screens.admin.product.lis.AdminProductListScreen
 import com.straccion.ecommerce.presentation.screens.client.home.ClientHomeScreen
 import com.straccion.ecommerce.presentation.screens.profile.update.ProfileUpdateScreen
 import com.straccion.ecommerce.presentation.screens.roles.RolesScreen
@@ -32,6 +34,26 @@ fun NavGraphBuilder.AdminCategoryNavGraph(navHostController: NavHostController) 
         ) {
             it.arguments?.getString("category")?.let {
                 AdminCategoryUpdateScreen(navHostController, categoryParam = it)
+            }
+        }
+        composable(
+            route = AdminCategoryScreen.ProducList.route,
+            arguments = listOf(navArgument("category") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("category")?.let {
+                AdminProductListScreen(navHostController, it)
+            }
+        }
+        composable(
+            route = AdminCategoryScreen.ProductCreate.route,
+            arguments = listOf(navArgument("category") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("category")?.let {
+                AdminProductCreateScreen(navHostController, it)
             }
         }
     }

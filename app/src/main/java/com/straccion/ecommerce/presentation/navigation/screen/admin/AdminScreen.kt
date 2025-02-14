@@ -16,11 +16,11 @@ sealed class AdminScreen(
         title = "Categorias",
         icon = Icons.AutoMirrored.Filled.List
     )
-    data object ProductList : AdminScreen(
-        route = "admin/produc/list",
-        title = "Productos",
-        icon = Icons.Default.ThumbUp
-    )
+//    data object ProductList : AdminScreen(
+//        route = "admin/produc/list",
+//        title = "Productos",
+//        icon = Icons.Default.ThumbUp
+//    )
     data object Profile : AdminScreen(
         route = "admin/profile",
         title = "Perfil",

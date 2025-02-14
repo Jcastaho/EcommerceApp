@@ -10,7 +10,6 @@ import com.straccion.ecommerce.presentation.navigation.screen.admin.AdminScreen
 @Composable
 fun AdminBottomBar(navHostController: NavHostController) {
     val screens = listOf(
-        AdminScreen.ProductList,
         AdminScreen.CategoryList,
         AdminScreen.Profile,
     )

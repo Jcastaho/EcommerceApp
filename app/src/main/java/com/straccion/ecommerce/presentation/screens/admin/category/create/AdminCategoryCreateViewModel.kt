@@ -23,8 +23,7 @@ import javax.inject.Inject
 class AdminCategoryCreateViewModel @Inject constructor(
     private val categoriesUseCase: CategoriesUseCase,
     @ApplicationContext private val context: Context
-) :
-    ViewModel() {
+) : ViewModel() {
     var state by mutableStateOf(AdminCategoryCreateState())
         private set
 
@@ -34,7 +33,7 @@ class AdminCategoryCreateViewModel @Inject constructor(
     var file: File? = null
 
     fun createCategory() = viewModelScope.launch {
-        if (file != null){
+        if (file != null) {
             categoryResponse = Response.Loading
             val result = categoriesUseCase.createCategoryUseCase(state.toCategory(), file!!)
             categoryResponse = result
@@ -61,11 +60,12 @@ class AdminCategoryCreateViewModel @Inject constructor(
     fun onNameInput(input: String) {
         state = state.copy(name = input)
     }
+
     fun onDescriptionInput(input: String) {
         state = state.copy(description = input)
     }
 
-    fun clearForm(){
+    fun clearForm() {
         state = state.copy(
             name = "",
             description = "",

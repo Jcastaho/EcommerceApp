@@ -6,5 +6,5 @@ data class AdminProductCreateState (
     val idCategory: Int = 0,
     val image1: String = "",
     val image2: String = "",
-    val price: Double = 0.0
+    val price: Int = 0
 )

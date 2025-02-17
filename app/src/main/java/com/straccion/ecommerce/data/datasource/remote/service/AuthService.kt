@@ -15,7 +15,7 @@ interface AuthService {
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String,
-        ): Response<AuthResponse>
+    ): Response<AuthResponse>
 
 
     @POST("auth/register")

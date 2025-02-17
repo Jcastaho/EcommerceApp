@@ -3,6 +3,8 @@ package com.straccion.ecommerce.di
 import android.app.Application
 import androidx.room.Room
 import com.straccion.ecommerce.data.datasource.local.dao.CategoriesDao
+import com.straccion.ecommerce.data.datasource.local.dao.ProductsDao
+import com.straccion.ecommerce.data.datasource.local.dao.ShoppingBagDao
 import com.straccion.ecommerce.data.datasource.local.db.EcommerceDB
 import dagger.Module
 import dagger.Provides
@@ -22,5 +24,13 @@ object DataBaseModule {
 
     @Provides
     @Singleton // se coloca por que viene de un paquete externo
-    fun provedeCategoruesDao(db: EcommerceDB): CategoriesDao = db.categoriesDao()
+    fun provedeCategoriesDao(db: EcommerceDB): CategoriesDao = db.categoriesDao()
+
+    @Provides
+    @Singleton // se coloca por que viene de un paquete externo
+    fun provedeProductsDao(db: EcommerceDB): ProductsDao = db.productsDao()
+
+    @Provides
+    @Singleton // se coloca por que viene de un paquete externo
+    fun provedeShoppingBagDao(db: EcommerceDB): ShoppingBagDao = db.shoppingBagDao()
 }

@@ -8,15 +8,11 @@ import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import com.straccion.ecommerce.presentation.navigation.Graph
 import com.straccion.ecommerce.presentation.navigation.screen.admin.AdminCategoryScreen
-import com.straccion.ecommerce.presentation.navigation.screen.roles.RolesScreen
 import com.straccion.ecommerce.presentation.screens.admin.category.create.AdminCategoryCreateScreen
 import com.straccion.ecommerce.presentation.screens.admin.category.update.AdminCategoryUpdateScreen
-import com.straccion.ecommerce.presentation.screens.admin.home.AdminHomeScreen
 import com.straccion.ecommerce.presentation.screens.admin.product.create.AdminProductCreateScreen
-import com.straccion.ecommerce.presentation.screens.admin.product.lis.AdminProductListScreen
-import com.straccion.ecommerce.presentation.screens.client.home.ClientHomeScreen
-import com.straccion.ecommerce.presentation.screens.profile.update.ProfileUpdateScreen
-import com.straccion.ecommerce.presentation.screens.roles.RolesScreen
+import com.straccion.ecommerce.presentation.screens.admin.product.list.AdminProductListScreen
+import com.straccion.ecommerce.presentation.screens.admin.product.update.AdminProductUpdateScreen
 
 fun NavGraphBuilder.AdminCategoryNavGraph(navHostController: NavHostController) {
     navigation(
@@ -54,6 +50,16 @@ fun NavGraphBuilder.AdminCategoryNavGraph(navHostController: NavHostController) 
         ) {
             it.arguments?.getString("category")?.let {
                 AdminProductCreateScreen(navHostController, it)
+            }
+        }
+        composable(
+            route = AdminCategoryScreen.ProductUpdate.route,
+            arguments = listOf(navArgument("product") {
+                type = NavType.StringType
+            })
+        ) {
+            it.arguments?.getString("product")?.let {
+                AdminProductUpdateScreen(navHostController, it)
             }
         }
     }

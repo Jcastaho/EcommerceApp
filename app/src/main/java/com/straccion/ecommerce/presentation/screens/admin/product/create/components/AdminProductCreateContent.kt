@@ -87,7 +87,10 @@ fun AdminProductCreateContent(
                         modifier = Modifier
                             .size(215.dp)
                             .clip(RoundedCornerShape(30.dp))
-                            .clickable { stateDialog.value = true },
+                            .clickable {
+                                stateDialog.value = true
+                                stateDialogImageNumber.value = 1
+                                       },
                         imageUrl = state.image1,
                         contentScale = ContentScale.Crop
                     )
@@ -111,7 +114,10 @@ fun AdminProductCreateContent(
                         modifier = Modifier
                             .size(215.dp)
                             .clip(RoundedCornerShape(30.dp))
-                            .clickable { stateDialog.value = true },
+                            .clickable {
+                                stateDialog.value = true
+                                stateDialogImageNumber.value = 2
+                                       },
                         imageUrl = state.image2,
                         contentScale = ContentScale.Crop
                     )
@@ -195,7 +201,7 @@ fun AdminProductCreateContent(
                 Spacer(modifier = Modifier.height(20.dp))
                 DefaultTextField(
                     modifier = Modifier.fillMaxWidth(),
-                    value = state.price.toString(),
+                    value = if (state.price.toString() == "0") "" else state.price.toString(),
                     onValueChange = {
                         viewModel.onPriceInput(it)
                     },
@@ -210,7 +216,7 @@ fun AdminProductCreateContent(
                         .height(50.dp),
                     text = "Crear Producto",
                     onClick = {
-                        //viewModel.createCategory()
+                        viewModel.createProduct()
                     }
                 )
                 Spacer(modifier = Modifier.height(60.dp))

@@ -1,4 +1,4 @@
-package com.straccion.ecommerce.presentation.screens.admin.product.lis
+package com.straccion.ecommerce.presentation.screens.admin.product.list
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -12,9 +12,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.straccion.ecommerce.domains.model.Category
 import com.straccion.ecommerce.presentation.components.DefaultTopBar
-import com.straccion.ecommerce.presentation.navigation.Graph
 import com.straccion.ecommerce.presentation.navigation.screen.admin.AdminCategoryScreen
-import com.straccion.ecommerce.presentation.screens.admin.product.lis.components.AdminProductListContent
+import com.straccion.ecommerce.presentation.screens.admin.product.list.components.AdminProductListContent
+import com.straccion.ecommerce.presentation.screens.admin.product.list.components.DeleteProducts
+import com.straccion.ecommerce.presentation.screens.admin.product.list.components.GetProducts
 
 @Composable
 fun AdminProductListScreen(
@@ -23,6 +24,13 @@ fun AdminProductListScreen(
 ) {
     val categoryParse = Category.fromJson(categoryParam).toJson()
     Scaffold(
+        topBar = {
+            DefaultTopBar(
+                title = "Lista de productos",
+                navHostController = navHostController,
+                upAvailable = true
+            )
+        },
         floatingActionButton = {
             FloatingActionButton(
                 modifier = Modifier.padding(bottom = 30.dp),
@@ -40,6 +48,7 @@ fun AdminProductListScreen(
             }
         }
     ) {
-        AdminProductListContent(it)
+        GetProducts(it, navHostController)
     }
+    DeleteProducts()
 }

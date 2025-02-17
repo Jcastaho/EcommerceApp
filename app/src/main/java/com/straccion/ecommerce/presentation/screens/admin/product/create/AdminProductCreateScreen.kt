@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.straccion.ecommerce.presentation.components.DefaultTopBar
 import com.straccion.ecommerce.presentation.screens.admin.product.create.components.AdminProductCreateContent
+import com.straccion.ecommerce.presentation.screens.admin.product.create.components.CreateProduct
 
 
 @Composable
@@ -20,4 +21,5 @@ fun AdminProductCreateScreen(navHostController: NavHostController, categoryParam
     ) {
         AdminProductCreateContent(it)
     }
+    CreateProduct()
 }

@@ -9,10 +9,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.straccion.ecommerce.domains.model.Category
-import com.straccion.ecommerce.domains.usecase.categories.CategoriesUseCase
+import com.straccion.ecommerce.domains.model.Product
+import com.straccion.ecommerce.domains.usecase.products.ProductsUseCase
 import com.straccion.ecommerce.domains.util.Response
-import com.straccion.ecommerce.presentation.screens.admin.category.create.AdminCategoryCreateState
-import com.straccion.ecommerce.presentation.screens.admin.category.create.mapper.toCategory
+import com.straccion.ecommerce.presentation.screens.admin.product.create.mapper.toProduct
 import com.straccion.ecommerce.presentation.util.ComposeFileProvider
 import com.straccion.ecommerce.presentation.util.ResultingActivityHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,13 +23,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AdminProductCreateViewModel @Inject constructor(
+    private val productUseCase: ProductsUseCase,
+    private val savedStateHandle: SavedStateHandle,
     @ApplicationContext private val context: Context,
-    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
     var state by mutableStateOf(AdminProductCreateState())
         private set
 
-    var categoryResponse by mutableStateOf<Response<Category>?>(null)
+    var productResponse by mutableStateOf<Response<Product>?>(null)
 
     var data = savedStateHandle.get<String>("category")//recupero los datos enviados
 
@@ -39,6 +40,21 @@ class AdminProductCreateViewModel @Inject constructor(
 
     var file1: File? = null
     var file2: File? = null
+    var files: List<File> = listOf()
+
+    init {
+        state = state.copy(idCategory = category.id?.toInt() ?: 0)
+    }
+
+    fun createProduct() = viewModelScope.launch {
+        if (file1 != null && file2 != null) {
+            files = listOf(file1!!, file2!!)
+            productResponse = Response.Loading
+            val result = productUseCase.createProductsUseCase(state.toProduct(), files)
+            productResponse = result
+        }
+
+    }
 
 
     fun pickImage(imageNumber: Int) = viewModelScope.launch {
@@ -47,8 +63,7 @@ class AdminProductCreateViewModel @Inject constructor(
             if (imageNumber == 1) {
                 file1 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image1 = result.toString())
-            }
-            else if (imageNumber == 2) {
+            } else if (imageNumber == 2) {
                 file2 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image2 = result.toString())
             }
@@ -61,8 +76,7 @@ class AdminProductCreateViewModel @Inject constructor(
             if (imageNumber == 1) {
                 state = state.copy(image1 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file1 = File(state.image1)
-            }
-            else if (imageNumber == 2) {
+            } else if (imageNumber == 2) {
                 state = state.copy(image2 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file2 = File(state.image2)
             }
@@ -78,7 +92,7 @@ class AdminProductCreateViewModel @Inject constructor(
     }
 
     fun onPriceInput(input: String) {
-        state = state.copy(price = input.toDouble())
+        state = state.copy(price = input.toIntOrNull() ?: 0)
     }
 
     fun clearForm() {
@@ -87,9 +101,9 @@ class AdminProductCreateViewModel @Inject constructor(
             description = "",
             image1 = "",
             image2 = "",
-            price = 0.0
+            price = 0
         )
-        categoryResponse = null
+        productResponse = null
     }
 
 }

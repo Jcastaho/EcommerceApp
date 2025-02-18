@@ -2,6 +2,7 @@ package com.straccion.ecommerce.di
 
 import android.app.Application
 import androidx.room.Room
+import com.straccion.ecommerce.data.datasource.local.dao.AddressDao
 import com.straccion.ecommerce.data.datasource.local.dao.CategoriesDao
 import com.straccion.ecommerce.data.datasource.local.dao.ProductsDao
 import com.straccion.ecommerce.data.datasource.local.dao.ShoppingBagDao
@@ -33,4 +34,8 @@ object DataBaseModule {
     @Provides
     @Singleton // se coloca por que viene de un paquete externo
     fun provedeShoppingBagDao(db: EcommerceDB): ShoppingBagDao = db.shoppingBagDao()
+
+    @Provides
+    @Singleton // se coloca por que viene de un paquete externo
+    fun provedeAddressDao(db: EcommerceDB): AddressDao = db.addressDao()
 }

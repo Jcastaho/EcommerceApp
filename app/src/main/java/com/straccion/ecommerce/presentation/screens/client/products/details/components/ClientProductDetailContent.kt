@@ -54,7 +54,7 @@ fun ClientProductDetailContent(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(380.dp)
+                    .height(340.dp)
                     .background(MaterialTheme.colorScheme.background)// Aquí estableces el fondo blanco
             ) {
                 SliderView(pagerState, viewModel.productImage)
@@ -95,7 +95,7 @@ fun ClientProductDetailContent(
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
-                    modifier = Modifier.padding(top = 20.dp, start = 16.dp),
+                    modifier = Modifier.padding(top = 20.dp, start = 16.dp, bottom = 10.dp),
                     text = viewModel.product.name,
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp
@@ -106,10 +106,10 @@ fun ClientProductDetailContent(
                     modifier = Modifier.padding(top = 20.dp, start = 16.dp),
                     text = "Description",
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                    fontSize = 18.sp
                 )
                 Text(
-                    modifier = Modifier.padding(start = 16.dp),
+                    modifier = Modifier.padding(top = 10.dp, start = 16.dp, bottom = 10.dp),
                     text = viewModel.product.description,
                     fontSize = 15.sp
                 )
@@ -117,7 +117,12 @@ fun ClientProductDetailContent(
 
                 Text(
                     modifier = Modifier.padding(top = 20.dp, start = 16.dp),
-                    text = "Precio: ${viewModel.product.price}",
+                    text = "Precio",
+                    fontSize = 18.sp
+                )
+                Text(
+                    modifier = Modifier.padding(top = 10.dp, start = 16.dp, bottom = 10.dp),
+                    text = viewModel.product.price.toString(),
                     fontSize = 15.sp
                 )
                 HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
@@ -126,17 +131,23 @@ fun ClientProductDetailContent(
                     modifier = Modifier.padding(top = 20.dp, start = 16.dp),
                     text = "Tu Orden",
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                    fontSize = 18.sp
                 )
                 Text(
-                    modifier = Modifier.padding(start = 16.dp),
-                    text = "Cantidad: 0",
+                    modifier = Modifier.padding(top = 20.dp, start = 16.dp),
+                    text = "Cantidad: ${viewModel.quantity}",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp
+                )
+
+                Text(
+                    modifier = Modifier.padding(top = 10.dp, start = 16.dp, bottom = 10.dp),
+                    text = "Precio Total: ${viewModel.price}",
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )
                 HorizontalDivider(color = Color.LightGray, thickness = 1.dp)
-
-                Spacer(modifier = Modifier.height(140.dp))
+                Spacer(modifier = Modifier.height(60.dp))
 
                 // Botón y contador
                 Row(

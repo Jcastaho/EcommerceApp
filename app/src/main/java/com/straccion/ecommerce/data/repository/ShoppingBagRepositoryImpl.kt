@@ -1,6 +1,5 @@
 package com.straccion.ecommerce.data.repository
 
-import android.util.Log
 import com.straccion.ecommerce.data.datasource.local.repository.datasource.ShoppingBagLocalDataSource
 import com.straccion.ecommerce.data.mapper.toEntity
 import com.straccion.ecommerce.data.mapper.toShoppingBagProduct
@@ -11,6 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ShoppingBagRepositoryImpl(
     private val localDataSource: ShoppingBagLocalDataSource
@@ -19,10 +19,8 @@ class ShoppingBagRepositoryImpl(
         CoroutineScope(Dispatchers.IO).launch {
             val shoppingBag = localDataSource.findById(product.id)
             if (shoppingBag == null) {
-                Log.d("ShoppingBagRepositoryImpl", "Creando datos")
                 localDataSource.insert(product.toEntity())
             } else {
-                Log.d("ShoppingBagRepositoryImpl", "Ya estaba creado")
                 localDataSource.update(product.id, product.quantity)
             }
         }
@@ -36,6 +34,16 @@ class ShoppingBagRepositoryImpl(
         localDataSource.findAll().collect() {
             emit(it.map { entity -> entity.toShoppingBagProduct() })
         }
+    }
+
+    override suspend fun findById(id: String): ShoppingBagProduct? {
+        val data = runBlocking(context = Dispatchers.IO) {
+            localDataSource.findById(id)
+        }
+        if (data != null){
+            return data.toShoppingBagProduct()
+        }
+        return null
     }
 
 

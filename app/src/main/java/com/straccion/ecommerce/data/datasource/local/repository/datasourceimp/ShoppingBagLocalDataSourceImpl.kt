@@ -15,7 +15,7 @@ class ShoppingBagLocalDataSourceImpl(
 
     override fun findAll(): Flow<List<ShoppingBagProductEntity>> = shoppingBagDao.findAll()
 
-    override fun findById(id: String): ShoppingBagProductEntity = shoppingBagDao.findById(id)
+    override suspend fun findById(id: String): ShoppingBagProductEntity = shoppingBagDao.findById(id)
 
     override suspend fun update(id: String, quantity: Int) = shoppingBagDao.update(id, quantity)
 

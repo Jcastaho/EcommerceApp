@@ -34,6 +34,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.straccion.ecommerce.domains.model.Product
 import com.straccion.ecommerce.presentation.components.DefaultAsyncImage
+import com.straccion.ecommerce.presentation.navigation.screen.client.ClientCategoryScreen
 import com.straccion.ecommerce.presentation.navigation.screen.client.ClientProductScreen
 import com.straccion.ecommerce.presentation.screens.client.products.list.ClientProductListViewModel
 
@@ -47,7 +48,7 @@ fun ClientProductListItem(
         modifier = Modifier
             .padding(16.dp)
             .fillMaxWidth()
-            .clickable { navHostController.navigate(route = ClientProductScreen.ProductDetail.passProduct(product.toJson())) }
+            .clickable { navHostController.navigate(route = ClientCategoryScreen.ProductDetail.passProduct(product.toJson())) }
             .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
     ) {
         Row(

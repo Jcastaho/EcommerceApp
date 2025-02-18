@@ -12,7 +12,7 @@ data class ShoppingBagProduct(
     @SerializedName("id_category") val idCategory: Int,
     @SerializedName("image1") val image1: String = "",
     @SerializedName("price") val price: Int,
-    @SerializedName("quantity") val quantity: Int,
+    @SerializedName("quantity") var quantity: Int,
 ): Serializable{
     fun toJson(): String = Gson().toJson(ShoppingBagProduct(
         id,

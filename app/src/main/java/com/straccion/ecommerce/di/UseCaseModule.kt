@@ -1,11 +1,15 @@
 package com.straccion.ecommerce.di
 
 
+import com.straccion.ecommerce.domains.repository.AddressRepository
 import com.straccion.ecommerce.domains.repository.AuthRepository
 import com.straccion.ecommerce.domains.repository.CategoryRepository
 import com.straccion.ecommerce.domains.repository.ProductsRepository
 import com.straccion.ecommerce.domains.repository.ShoppingBagRepository
 import com.straccion.ecommerce.domains.repository.UsersRepository
+import com.straccion.ecommerce.domains.usecase.address.AddressUseCase
+import com.straccion.ecommerce.domains.usecase.address.CreateAddressUseCase
+import com.straccion.ecommerce.domains.usecase.address.FindByUserAddressUseCase
 import com.straccion.ecommerce.domains.usecase.auth.AuthUseCase
 import com.straccion.ecommerce.domains.usecase.auth.GetSessionDataUseCase
 import com.straccion.ecommerce.domains.usecase.auth.LoginUseCase
@@ -29,6 +33,7 @@ import com.straccion.ecommerce.domains.usecase.products.UpdateProductWithImageUs
 import com.straccion.ecommerce.domains.usecase.shoppingbag.ShoppingBagAddUseCase
 import com.straccion.ecommerce.domains.usecase.shoppingbag.ShoppingBagDeleteUseCase
 import com.straccion.ecommerce.domains.usecase.shoppingbag.ShoppingBagFindAllUseCase
+import com.straccion.ecommerce.domains.usecase.shoppingbag.ShoppingBagFindByIdUseCase
 import com.straccion.ecommerce.domains.usecase.shoppingbag.ShoppingBagUseCase
 import com.straccion.ecommerce.domains.usecase.users.UpdateUserUseCase
 import com.straccion.ecommerce.domains.usecase.users.UpdateUserWithImageUseCase
@@ -85,7 +90,15 @@ object UseCaseModule {
         ShoppingBagUseCase(
             addUseCase = ShoppingBagAddUseCase(shoppingBagRepository),
             deleteUseCase = ShoppingBagDeleteUseCase(shoppingBagRepository),
-            findAllUseCase = ShoppingBagFindAllUseCase(shoppingBagRepository)
+            findAllUseCase = ShoppingBagFindAllUseCase(shoppingBagRepository),
+            findByIdUseCase = ShoppingBagFindByIdUseCase(shoppingBagRepository)
+        )
+
+    @Provides
+    fun provideAddressUseCase(addressRepository: AddressRepository) =
+        AddressUseCase(
+            createAddressUseCase = CreateAddressUseCase(addressRepository),
+            findByUserAddressUseCase = FindByUserAddressUseCase(addressRepository)
         )
 
 }

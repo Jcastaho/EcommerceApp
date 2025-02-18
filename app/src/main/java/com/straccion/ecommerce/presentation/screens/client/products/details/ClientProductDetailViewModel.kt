@@ -29,24 +29,31 @@ class ClientProductDetailViewModel @Inject constructor(
     var quantity by mutableIntStateOf(0)
         private set
 
+    var price by mutableIntStateOf(0)
+        private set
+
     init {
-        getShoppingBag()
+        getShoppingBagProduct()
     }
 
     fun add() {
         quantity += 1
+        price = product.price * quantity
     }
 
     fun remove() {
         if (quantity > 0) {
             quantity -= 1
+            price = product.price * quantity
         }
     }
 
-    fun getShoppingBag() = viewModelScope.launch {
-        shoppingBagUseCase.findAllUseCase().collect() {
-            Log.d("ClientProductDetailViewModel", "Data: $it")
-        }
+
+
+    fun getShoppingBagProduct() = viewModelScope.launch {
+        val result = shoppingBagUseCase.findByIdUseCase(product.id ?: "")
+        quantity = result?.quantity ?: 0
+        price = product.price * quantity
     }
 
     fun saveItem() = viewModelScope.launch {

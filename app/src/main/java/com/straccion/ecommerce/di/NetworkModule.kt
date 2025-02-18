@@ -2,6 +2,7 @@ package com.straccion.ecommerce.di
 
 import com.straccion.ecommerce.core.Config.BASE_URL
 import com.straccion.ecommerce.data.datasource.local.datastore.AuthDataStore
+import com.straccion.ecommerce.data.datasource.remote.service.AddressService
 import com.straccion.ecommerce.data.datasource.remote.service.AuthService
 import com.straccion.ecommerce.data.datasource.remote.service.CategoriesService
 import com.straccion.ecommerce.data.datasource.remote.service.ProductsService
@@ -65,5 +66,11 @@ object NetworkModule {
     @Singleton
     fun provideProductsService(retrofit: Retrofit): ProductsService {
         return retrofit.create(ProductsService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAddressService(retrofit: Retrofit): AddressService {
+        return retrofit.create(AddressService::class.java)
     }
 }

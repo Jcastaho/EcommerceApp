@@ -33,4 +33,9 @@
     <string name="nombre_producto">Nombre del producto</string>
     <string name="descripcion_producto">Descripción</string>
     <string name="precio_producto">Precio</string>
+
+    <!-- Client AddressCreate -->
+    <string name="titulo_address_create">Nueva Dirección</string>
+    <string name="addres_create">Dirección</string>
+    <string name="neighboord_create">Barrio</string>
 </resources>

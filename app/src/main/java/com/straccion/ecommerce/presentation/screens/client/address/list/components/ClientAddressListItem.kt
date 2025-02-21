@@ -16,17 +16,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.straccion.ecommerce.domains.model.Address
+import com.straccion.ecommerce.presentation.screens.client.address.list.ClientAddressListViewModel
 
 @Composable
-fun ClientAddressListItem(address: Address) {
+fun ClientAddressListItem(
+    address: Address,
+    viewModel: ClientAddressListViewModel = hiltViewModel()
+) {
     Column(
         modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)) {
         Row(modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically) {
             RadioButton(
-                selected = false,
-                onClick = {  }
+                selected = address.id == viewModel.selectedAddress,
+                onClick = { viewModel.onSelectedAddressInput(address) }
             )
             Column {
                 Text(

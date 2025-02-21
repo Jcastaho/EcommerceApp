@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.straccion.ecommerce.domains.model.Address
+import com.straccion.ecommerce.domains.model.User
 import com.straccion.ecommerce.domains.usecase.address.AddressUseCase
 import com.straccion.ecommerce.domains.usecase.auth.AuthUseCase
 import com.straccion.ecommerce.domains.util.Response
@@ -23,10 +24,16 @@ class ClientAddressListViewModel @Inject constructor(
     var addressResponse by mutableStateOf<Response<List<Address>>?>(null)
         private set
 
+    var selectedAddress by mutableStateOf("")
+        private set
+    var user: User? = null
 
     fun getSessionData() = viewModelScope.launch {
-        val user = authUseCase.getSessionDataUseCase().first().user
+        user = authUseCase.getSessionDataUseCase().first().user
         getAddress(user?.id ?: "")
+        if (user?.address != null){
+            selectedAddress = user?.address?.id ?: ""
+        }
     }
 
     fun getAddress(idUser: String) = viewModelScope.launch{
@@ -34,6 +41,15 @@ class ClientAddressListViewModel @Inject constructor(
         addressUseCase.findByUserAddressUseCase(idUser).collect(){
             addressResponse =it
         }
+    }
+
+    fun onSelectedAddressInput(address: Address) = viewModelScope.launch {
+        selectedAddress = address.id ?: ""
+        user?.address = address
+        if (user != null){
+            authUseCase.updateSessionUseCase(user!!)
+        }
+
     }
 
 }
